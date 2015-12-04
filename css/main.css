@@ -1,0 +1,267 @@
+.main_content{
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    top:50%;
+    left:50%;
+    margin-top: -278px;
+    margin-left:-366px;
+    width: 712px;
+}
+
+.main_table_head{
+    background-image: url('/help.files/images/main_head.jpg');
+    width: 712px;
+    height: 33px;
+    display: inline-block;
+}
+.main_table_head div{
+    display: inline-block;
+    position: relative;
+    top:5px;
+    font-size: 10px;
+}
+
+.main_table_head_first{
+    width: 100px;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.main_table_head_last{
+    text-align: left;
+    padding-left: 30px;
+    width: 100px;
+}
+
+.main_table_head_email{
+    text-align: left;
+    padding-left: 30px;
+    width: 100px;
+}
+
+.main_table_head_best{
+    text-align: left;
+    padding-left: 30px;
+    width: 100px;
+}
+
+.main_table_head_actions{
+    text-align: left;
+    padding-left: 80px;
+    width: 70px;
+}
+
+.main_content tbody{
+    width: 712px;
+    background-color: #303030;
+}
+
+.main_content table{
+    border:0;
+    width: 712px;
+    border-spacing: 0 0;
+}
+
+.main_actions{
+    width: 152px;
+}
+
+.main_best{
+    width: 100px;
+}
+
+.main_content tr{
+
+    font-size: 10px;
+    margin-top:0;
+}
+
+tbody tr:first-child{
+    display: none;
+}
+
+
+.main_line{
+    height: 1px;
+}
+
+.main_line td{
+    background-color: #696969;
+}
+
+.tr_content{
+    height: 30px;
+}
+
+.main_bottom{
+    background-image: url('/help.files/images/main_bottom.jpg');
+    width: 712px;
+}
+
+.td_content_first{
+    width: 100px;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.td_content_last{
+    text-align: left;
+    padding-left: 30px;
+    width: 100px;
+}
+
+.td_content_email{
+    text-align: left;
+    padding-left: 30px;
+    width: 100px;
+}
+
+.td_content_best{
+    text-align: left;
+    padding-left: 30px;
+    width: 100px;
+}
+
+.td_content_action{
+    padding-left: 30px;
+    width: 100px;
+}
+
+.orange_border_l{
+    display: inline-block;
+    float: left;
+    background-image: url('/help.files/images/orange_border_l.jpg');
+    width: 6px;
+    height: 17px;
+}
+
+.orange_c{
+    height: 17px;
+    width: 29px;
+    display: inline-block;
+    text-align: center;
+    float:left;
+    background-image: url('/help.files/images/orange_c.png');
+    background-repeat: repeat-x;
+}
+
+.orange_border_r{
+    display: inline-block;
+    float: left;
+    background-image: url('/help.files/images/orange_border_r.jpg');
+    width: 6px;
+    height: 17px;
+}
+.main_bottom{
+    width: 712px;
+    height: 49px;
+}
+
+.orange_c span{
+    position: relative;
+    top:4px;
+}
+
+.link_view{
+    position: relative;
+    left:81px;
+}
+
+.link_edit{
+    position: relative;
+    left:50px;
+}
+
+.link_delete{
+    display: none;
+    position: relative;
+    right:-81px;
+    height: 1px;
+}
+
+.link_delete img{
+    height: 17px;
+}
+
+.main_actions:hover .link_delete{
+    display: block;
+}
+
+
+label img{
+    float:left;
+    height: 33px;
+    width:24px;
+}
+
+.pagination{
+    position: relative;
+    margin-left: 70px;
+}
+
+.pagination .first_page{
+    float: left;
+    background-image: url('/help.files/images/pagination_back.png');
+    background-repeat: repeat-x;
+    border:none;
+    height: 33px;
+    width: 80px;
+}
+
+.pagination .prev_page{
+    float: left;
+    background-image: url('/help.files/images/pagination_back.png');
+    background-repeat: repeat-x;
+    width: 80px;
+    height: 33px;
+    border: none;
+}
+
+.pagination .pagination_separator{
+    float:left;
+    background-image: url('/help.files/images/pagination_separator.png');
+    height: 33px;
+    width: 1px;
+}
+
+.pagination .next_page{
+    float: left;
+    background-image: url('/help.files/images/pagination_back.png');
+    background-repeat: repeat-x;
+    width: 80px;
+    height: 33px;
+    border: none;
+}
+
+.pagination .last_page{
+    float: left;
+    background-image: url('/help.files/images/pagination_back.png');
+    background-repeat: repeat-x;
+    border:none;
+    height: 33px;
+    width: 80px;
+}
+
+.pagination .pages{
+    border: none;
+    font-size: 10px;
+    background-image: url('/help.files/images/buttons_back.png');
+    background-repeat: repeat-x;
+    height: 13px;
+}
+
+.pagination .pages_back{
+    float:left;
+    background-image: url('/help.files/images/pagination_back.png');
+    width: 200px;
+    height: 33px;
+    background-repeat: repeat-x;
+}
+
+.pagination .pages_position{
+    width: 180px;
+    position: relative;
+    top:10px;
+    left:20px;
+}

@@ -1,0 +1,47 @@
+.delete_content{
+    position: relative;
+    width: 400px;
+    height: 300px;
+    top:50%;
+    left:50%;
+    margin-top:-150px;
+    margin-left: -200px;
+}
+
+
+.delete_button{
+    width: 100px;
+    background-image: url('/help.files/images/background_link.jpg');
+    background-repeat: repeat-x;
+    height: 23px;
+    border: none;
+    float: left;
+    color:white;
+}
+
+.delete_submit_l{
+    width: 8px;
+    height: 23px;
+    float: left;
+    background-image: url('/help.files/images/login_submit_l.png');
+}
+
+.delete_submit_r{
+    width: 7px;
+    height: 23px;
+    float: left;
+    background-image: url('/help.files/images/login_submit_r.png');
+    margin-right: 50px;
+}
+
+
+
+.cancel_button{
+    width: 100px;
+    background-image: url('/help.files/images/background_link.jpg');
+    background-repeat: repeat-x;
+    height: 23px;
+    border: none;
+    float: left;
+    color:white;
+}

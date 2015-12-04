@@ -1,0 +1,290 @@
+.event_content{
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    top:50%;
+    left:50%;
+    margin-top: -278px;
+    margin-left:-366px;
+    width: 800px;
+}
+
+.event_table_head{
+    background-image: url('/help.files/images/main_head.jpg');
+    width: 712px;
+    height: 33px;
+    display: inline-block;
+}
+.event_table_head div{
+    display: inline-block;
+    position: relative;
+    top:5px;
+    font-size: 10px;
+}
+
+.event_table_head_checkboxes{
+    padding-left: 20px;
+    width: 100px;
+    text-align: left;
+}
+
+.event_table_head_first > button{
+    background: none;
+    color:white;
+    border:none;
+    font-size: 10px;
+
+}
+
+.event_table_head_last > button{
+    background: none;
+    color:white;
+    border:none;
+    font-size: 10px;
+
+}
+
+.event_table_head_first > button text{
+    font-size:20px;
+}
+
+.event_table_head_first{
+    width: 100px;
+    text-align: left;
+    padding-left: 30px;
+}
+
+.event_table_head_last{
+    text-align: left;
+    padding-left: 30px;
+    width: 100px;
+}
+
+.event_table_head_email{
+    text-align: left;
+    padding-left: 30px;
+    width: 100px;
+}
+
+.event_table_head_best{
+    text-align: left;
+    padding-left: 30px;
+    width: 100px;
+}
+
+
+
+.td_content_checkboxes{
+    width: 105px;
+    text-align: left;
+    padding: 0;
+    padding-left: 15px;
+}
+
+.td_content_first{
+    width: 100px;
+    text-align: left;
+    padding: 0;
+    padding-left: 35px;
+}
+
+.td_content_last{
+    text-align: left;
+    width: 130px;
+    padding: 0;
+    padding-left: 35px;
+}
+
+.td_content_email{
+    text-align: left;
+    width: 125px;
+    padding: 0;
+}
+
+.td_content_best{
+    text-align: left;
+    width: 153px;
+    padding: 0;
+    padding-left: 14px;
+}
+
+
+.event_content tbody{
+    width: 712px;
+    background-color: #303030;
+}
+
+.event_content table{
+    border:0;
+    width: 712px;
+    border-spacing: 0 0;
+}
+
+
+
+.event_best{
+    width: 100px;
+}
+
+.event_content tr{
+
+    font-size: 10px;
+    margin-top:0;
+}
+
+tbody tr:first-child{
+    display: none;
+}
+
+
+
+.event_line{
+    height: 1px;
+}
+
+.event_line td{
+    background-color: #696969;
+}
+
+.tr_content{
+    height: 30px;
+}
+
+.event_bottom{
+    background-image: url('/help.files/images/main_bottom.jpg');
+    width: 712px;
+}
+
+
+.event_bottom{
+    width: 712px;
+    height: 49px;
+}
+
+.emails_button{
+    width: 100px;
+    background-image: url('/help.files/images/background_link.jpg');
+    background-repeat: repeat-x;
+    height: 23px;
+    border: none;
+    float: left;
+    color:white;
+}
+
+.emails_submit_l{
+    width: 8px;
+    height: 23px;
+    float: left;
+    background-image: url('/help.files/images/login_submit_l.png');
+    margin-left: 20px;
+}
+
+.emails_submit_r{
+    width: 7px;
+    height: 23px;
+    float: left;
+    background-image: url('/help.files/images/login_submit_r.png');
+    margin-right: 50px;
+}
+
+input[type='text']{
+    background-color: grey;
+    border: none;
+}
+
+
+.emails_button{
+    width: 100px;
+    background-image: url('/help.files/images/background_link.jpg');
+    background-repeat: repeat-x;
+    height: 23px;
+    border: none;
+    float: left;
+    color:white;
+}
+
+.event_buttons{
+    position: relative;
+    left:50%;
+    margin-left: -185px;
+    width: 370px;
+    height: 23px;
+}
+
+
+label img{
+    float:left;
+    height: 33px;
+    width:24px;
+}
+
+.pagination{
+    position: relative;
+    margin-left: 70px;
+}
+
+.pagination .first_page{
+    float: left;
+    background-image: url('/help.files/images/pagination_back.png');
+    background-repeat: repeat-x;
+    border:none;
+    height: 33px;
+    width: 80px;
+}
+
+.pagination .prev_page{
+    float: left;
+    background-image: url('/help.files/images/pagination_back.png');
+    background-repeat: repeat-x;
+    width: 80px;
+    height: 33px;
+    border: none;
+}
+
+.pagination .pagination_separator{
+    float:left;
+    background-image: url('/help.files/images/pagination_separator.png');
+    height: 33px;
+    width: 1px;
+}
+
+.pagination .next_page{
+    float: left;
+    background-image: url('/help.files/images/pagination_back.png');
+    background-repeat: repeat-x;
+    width: 80px;
+    height: 33px;
+    border: none;
+}
+
+.pagination .last_page{
+    float: left;
+    background-image: url('/help.files/images/pagination_back.png');
+    background-repeat: repeat-x;
+    border:none;
+    height: 33px;
+    width: 80px;
+}
+
+.pagination .pages{
+    border: none;
+    font-size: 10px;
+    background-image: url('/help.files/images/buttons_back.png');
+    background-repeat: repeat-x;
+    height: 13px;
+}
+
+.pagination .pages_back{
+    float:left;
+    background-image: url('/help.files/images/pagination_back.png');
+    width: 200px;
+    height: 33px;
+    background-repeat: repeat-x;
+}
+
+.pagination .pages_position{
+    width: 180px;
+    position: relative;
+    top:10px;
+    left:20px;
+}

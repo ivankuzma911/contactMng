@@ -1,0 +1,83 @@
+.edit_content{
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    width: 626px;
+    top:30%;
+    left:50%;
+    margin-top: -278px;
+    margin-left:-224px;
+}
+
+.edit_border_l{
+    float:left;
+    width: 17px;
+    height: 626px;
+    background-image: url('/help.files/images/edit_border_l.png');
+}
+
+.edit_border_r{
+    float:left;
+    width: 18px;
+    height: 626px;
+    background-image: url('/help.files/images/edit_border_r.png');
+}
+
+.edit_c{
+    background-image: url('/help.files/images/edit_c.png');
+    background-repeat: repeat-x;
+    width: 450px;
+    height: 626px;
+    float:left;
+
+}
+
+form{
+    margin-left: 50px;
+    margin-top:50px;
+}
+
+input[type='text']{
+    width: 230px;
+}
+
+.edit_c table tr{
+    height: 30px;
+}
+
+input[type='radio']{
+    float:right;
+}
+
+.edit_submit{
+    position: relative;
+    top:50px;
+}
+
+input[type='submit']{
+    width: 50px;
+    background-image: url('/help.files/images/edit_submit_c.png');
+    background-repeat: repeat-x;
+    float: left;
+    border:none;
+    height: 23px;
+    color:white;
+}
+
+.edit_submit_c{
+
+}
+
+.edit_submit_l{
+    float:left;
+    background-image: url('/help.files/images/edit_submit_l.png');
+    height: 23px;
+    width: 9px;
+}
+
+.edit_submit_r{
+    float:left;
+    background-image: url('/help.files/images/edit_submit_r.png');
+    height: 23px;
+    width: 9px;
+}
