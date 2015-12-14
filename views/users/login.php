@@ -101,12 +101,9 @@
     <div class="login_content_border_r"></div>
     <div class="login_content_border_help"></div>
 </div>
-
-<div class="footer">
-
-    &copy Wise Engineering 2015
 </div>
-
+<div class="footer">
+    &copy Wise Engineering 2015
 </div>
 </body>
 </html>

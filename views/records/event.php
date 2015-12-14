@@ -142,10 +142,9 @@
         <p>You don't have any contacts.Press <a href="add.php">add</a> to add contacts</p>
         <?php endif; ?>
         </div>
-
-        <div class="footer">
-            &copy Wise Engineering 2015
-        </div>
+    </div>
+    <div class="footer">
+        &copy Wise Engineering 2015
     </div>
     </body>
 </html>

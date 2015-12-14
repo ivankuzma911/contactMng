@@ -1,5 +1,5 @@
 .emails_content{
-    position: relative;
+    position: absolute;
     padding-top: 100px;
     padding-bottom: 100px;
     width: 548px;
@@ -101,4 +101,10 @@ form{
 
 #label{
     float:left;
+}
+
+.div_helper{
+    float:left;
+    width: 0;
+    clear: none;
 }

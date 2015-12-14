@@ -73,10 +73,12 @@
     </form>
     </div>
     <div class="emails_content_border_r"></div>
+    <div class="div_helper"></div>
 </div>
-    <div class="footer">
-        &copy Wise Engineering 2015
-    </div>
+
+</div>
+<div class="footer">
+    &copy Wise Engineering 2015
 </div>
 
 

@@ -21,7 +21,7 @@
                 <div class="header_link_border_r"></div>
             </a>
 
-            <a href="../users/login">
+            <a href="/users/login">
                 <div class="header_link_border_l"></div>
                 <div class="header_link_c">
                     <img src="/help.files/images/login.png">
@@ -175,9 +175,10 @@
         <div class="edit_border_r"></div>
 </div>
 
-    <div class="footer">
-        &copy Wise Engineering 2015
-    </div>
+
+</div>
+<div class="footer">
+    &copy Wise Engineering 2015
 </div>
 </body>
 </html>

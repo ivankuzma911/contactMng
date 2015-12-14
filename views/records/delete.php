@@ -60,9 +60,9 @@
 
     </form>
 </div>
-    <div class="footer">
-        &copy Wise Engineering 2015
-    </div>
+</div>
+<div class="footer">
+    &copy Wise Engineering 2015
 </div>
 </body>
 </html>

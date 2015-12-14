@@ -119,17 +119,18 @@
         <label for="button_end">
             <img src="/help.files/images/pagination_border_r.png">
         </label>
+        <div class="helper"></div>
         </div>
+
 <?php else: ?>
     <p>You don't have any contacts.Press add-button to add contacts</p>
 <?php endif; ?>
 
         </div>
-
-        <div class="footer">
-            &copy Wise Engineering 2015
-        </div>
 </div>
+    <div class="footer">
+        &copy Wise Engineering 2015
+    </div>
 </body>
 </html>
 

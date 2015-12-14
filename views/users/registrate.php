@@ -71,12 +71,9 @@
 </div>
     <div class="registrate_content_border_r"></div>
 </div>
-
-
-
+</div>
 <div class="footer">
     &copy Wise Engineering 2015
-</div>
 </div>
 </body>
 </html>
