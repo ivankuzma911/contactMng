@@ -16,10 +16,8 @@ abstract class model{
     );
 
     public function __construct($class_to_load){
-
         $this->class_loader($class_to_load);
         $this->db = new db();
-
     }
 
     public function class_loader($class_to_load){
@@ -34,7 +32,6 @@ abstract class model{
             foreach($class_to_load as $key=>$value){
                 include("help.files/$value");
             }
-
         }
 
     }

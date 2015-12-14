@@ -3,13 +3,13 @@
 class Dispatcher
 {
     protected $default_controller = 'records',
-        $default_method = 'main';
+              $default_method = 'main';
 
 
-    public $path,
-        $controller,
-        $method,
-        $params;
+    public   $path,
+             $controller,
+             $method,
+             $params;
 
     public function __construct()
     {
@@ -46,7 +46,6 @@ class Dispatcher
 }
 
 session_start();
-
 $controller = new Dispatcher();
 
 

@@ -46,8 +46,6 @@ class formConstruct
                             <img src='/help.files/images/arrows_left.png' width='15' height='10'>
                      </button>";
 
-
-
         $page_end = "<button formaction='/records/" . $method . "/" . "$page_total"."/" . "$path". "' id='button_end' class='last_page'>
                             <img src='/help.files/images/arrows_right.png' width='15' height='10'>
                   </button>";
@@ -63,7 +61,6 @@ class formConstruct
         else {
             $prev_page= "<button formaction='/records/".$method."/" . ($page) . "/" . "$path"."' class='prev_page'>"."<img src='/help.files/images/prev_image.png'>". " Previous"."</button>";
         }
-
 
 
         if($page - 3 >= 1) {

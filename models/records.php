@@ -26,7 +26,7 @@ class RecordsModel extends model{
     }
 
     public function countRecords($db){
-        $num = 1;
+        $num = 0;
         if(isset($_COOKIE['checkboxes'])) {
             foreach ($db as $records) {
                 foreach ($_COOKIE['checkboxes'] as $key => $value) {

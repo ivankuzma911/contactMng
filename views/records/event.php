@@ -74,7 +74,7 @@
                             if(isset($_COOKIE['checkboxes'])){
                                 foreach($_COOKIE['checkboxes'] as $key=>$value) {
                                     if ($result['id'] == $key) {
-                                        if($records['checked_records'] >= 5 && $records['allCheckboxes'] == 'checked') {
+                                        if($records['checked_records'] == 5 && $records['allCheckboxes'] == 'checked') {
                                             $records['checkedCheckbox'] = '';
                                             $allCheckboxes = '';
                                         }else{

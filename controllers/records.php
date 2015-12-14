@@ -43,6 +43,7 @@ class records extends controller
 
     public function event($params = null)
     {
+
         $this->model->deleteCheckboxes();
         $this->model->saveCheckboxes();
         if ($params === null) {
