@@ -37,6 +37,7 @@
                     <span> Registration</span>
                 </div>
                 <div class="header_link_border_r"></div>
+
             </a>
         </div>
     </header>
@@ -173,6 +174,7 @@
     </form>
     </div>
         <div class="edit_border_r"></div>
+        <div class="border_helper"></div>
 </div>
 
 

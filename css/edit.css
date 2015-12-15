@@ -81,3 +81,11 @@ input[type='submit']{
     height: 23px;
     width: 9px;
 }
+
+.border_helper{
+    float:left;
+    clear:none;
+    height: 626px;
+    width: 0;
+
+}
