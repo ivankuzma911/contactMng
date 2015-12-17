@@ -79,7 +79,6 @@ class db {
                 return false;
             }
         }elseif($params['action'] == 'update'){
-
             $sql = "UPDATE records set ";
             while (list($key, $val) = each($params['params_to_update'])) {
                 $sql .= ("$key = '$val', ");

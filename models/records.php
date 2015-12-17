@@ -1,4 +1,5 @@
 <?php
+
 include('model.php');
 class RecordsModel extends model{
 
@@ -50,7 +51,6 @@ class RecordsModel extends model{
            foreach($_COOKIE['checkboxes'] as $key=>$value){
                $this->array_to_db['params_to_select'] = $key;
                $email = $this->db->select($this->array_to_db);
-
                if(isset($email)){
                  foreach($email as $key=>$value) {
                    array_push($array_from_db, $value);
@@ -60,7 +60,7 @@ class RecordsModel extends model{
        }
         $array_from_db = implode(' ',$array_from_db);
         if(is_string($array_from_db)){
-            setcookie('emails',$array_from_db,time()+3600,'/','study.ivan');
+            setcookie('emails',$array_from_db,time()+COOKIES_LIVE_TIME,'/',DOMEN_NAME);
         }
         return $array_from_db;
     }
@@ -73,20 +73,18 @@ class RecordsModel extends model{
 
     public function saveCheckboxes()
     {
-        $domen = 'study.ivan';
             if (!empty($_POST['hidden'])) {
                 if (!empty($_POST['checkboxes'])) {
                     foreach ($_POST['hidden'] as $hiddenKey => $hiddenValue) {
                         foreach ($_POST['checkboxes'] as $checkboxKey => $checkboxValue) {
                             if ($hiddenValue == $checkboxValue) {
-
-                                setcookie('checkboxes[' . $checkboxValue . ']', $hiddenValue, time() + 3600, '/', $domen);
+                                setcookie('checkboxes[' . $checkboxValue . ']', $hiddenValue, time() + COOKIES_LIVE_TIME, '/', DOMEN_NAME);
                             }
                         }
                     }
                 } else {
                     foreach ($_POST['hidden'] as $hiddenKey => $hiddenValue) {
-                        setcookie("checkboxes[$hiddenValue]", null, time() - 3600, '/', $domen);
+                        setcookie("checkboxes[$hiddenValue]", null, time() - COOKIES_LIVE_TIME, '/', DOMEN_NAME);
                     }
                 }
             }
@@ -94,7 +92,6 @@ class RecordsModel extends model{
 
 
     public function deleteCheckboxes(){
-        $domen = 'study.ivan';
         if(!empty($_POST['hidden'])){
             if(!empty($_COOKIE['checkboxes'])){
                 if(!empty($_POST['checkboxes'])){
@@ -103,7 +100,7 @@ class RecordsModel extends model{
                             if($cookieValue==$hiddenValue){
                                 foreach($_POST['checkboxes']as $postKey=>$postValue){
                                     if($cookieValue != $postValue){
-                                        setcookie("checkboxes[$cookieValue]", null, time() - 3600, '/', $domen);
+                                        setcookie("checkboxes[$cookieValue]", null, time() - COOKIES_LIVE_TIME, '/', DOMEN_NAME);
                                     }
                                 }
                             }
@@ -121,13 +118,15 @@ class RecordsModel extends model{
         if(isset($_COOKIE['emails'])) {
             $before = $_COOKIE['emails'];
             $after = $_POST['emails'];
-            if(strlen($before)< strlen($after)){
-                $added_emails = substr($after,strlen($before),(strlen($after)-strlen($before)));
+            if (strlen($before) < strlen($after)) {
+                $added_emails = substr($after, strlen($before), (strlen($after) - strlen($before)));
             }
-            if(strpos($added_emails," ")){
-                $added_emails = explode($added_emails," ");
-                   }
-            return $added_emails;
+            if (isset($added_emails)) {
+                if (strpos($added_emails, " ")) {
+                    $added_emails = explode($added_emails, " ");
+                }
+                return $added_emails;
+            }
         }
 
     }
@@ -153,21 +152,54 @@ class RecordsModel extends model{
     }
 
 
-    public function getAllUrl($params){
-        if(isset($params[4])){
-            unset($params[4]);
-            $new_url = implode('/',$params);
-        } else {
-            $new_url = implode('/',$params);
-            $new_url .= "/select_all";
+    public function getAllUrl($params, $type='all'){
+        if($type=='all') {
+            if (isset($params[4])) {
+                unset($params[4]);
+                $new_url = implode('/', $params);
+            } else {
+                $new_url = implode('/', $params);
+                $new_url .= "/select_all";
+            }
+            return $new_url;
+        }else{
+            if (isset($params[4])) {
+                unset($params[4]);
+                $new_url = implode('/', $params);
+            } else {
+                $new_url = implode('/', $params);
+                $new_url .= "/reset";
+            }
+            return $new_url;
         }
-        return $new_url;
+    }
+
+    public function checkReset($params){
+        foreach($params as $key=>$value){
+            if($value=='reset'){
+                return true;
+            }
+        }
+        return false;
+
     }
 
     public function addContact(){
         $this->array_to_db['table'] = 'records';
         $this->array_to_db['params_to_db'] = 'id';
         unset($_POST['submit_add']);
+        foreach($_POST as $key=>$value){
+            if($key == 'email'){
+                if(!$this->validate_data($value,'email')){
+                    return false;
+                }
+            }else {
+                if (!$this->validate_data($value)) {
+                    return false;
+                }
+            }
+        }
+
         $this->array_to_db['params_to_insert'] = $_POST;
         $this->array_to_db['params_to_insert']['user_id'] = $_SESSION['id'];
         $result = $this->db->insert($this->array_to_db);
@@ -205,7 +237,6 @@ class RecordsModel extends model{
 }
 
     public function saveEmails(){
-        $domen = 'study.ivan';
         $emails = $_POST['checkboxes'];
         $this->array_to_db['table'] = 'records';
         foreach($emails as $key=>$value){
@@ -217,7 +248,7 @@ class RecordsModel extends model{
         {
             foreach($_COOKIE['checkboxes'] as $key => $value)
             {
-                setcookie("checkboxes[$key]", null,time()-3600,'/',$domen);
+                setcookie("checkboxes[$key]", null,time()-COOKIES_LIVE_TIME,'/',DOMEN_NAME);
             }
         }
         redirect::to('/records/main');

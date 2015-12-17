@@ -41,25 +41,37 @@ class formConstruct
         $separator = "<div class='pagination_separator'></div>";
         $path = implode('/',$url);
         $pages = "";
+        if($page == 1) {
 
-        $page_start= "<button formaction='/records/".$method."/1/".$path."' id='button_start' class='first_page'>
+            $page_start = "<button formaction='/records/" . $method . "/1/" . $path . "' id='button_start' class='first_page_non_active' disabled>
+                            <img src='/help.files/images/arrow_non_active_left.png' width='15' height='10'>
+                           </button>";
+        }else{
+            $page_start = "<button formaction='/records/" . $method . "/1/" . $path . "' id='button_start' class='first_page'>
                             <img src='/help.files/images/arrows_left.png' width='15' height='10'>
-                     </button>";
-
-        $page_end = "<button formaction='/records/" . $method . "/" . "$page_total"."/" . "$path". "' id='button_end' class='last_page'>
+                          </button>";
+        }
+        if($page==$page_total){
+            $page_end = "<button formaction='/records/" . $method . "/" . "$page_total"."/" . "$path". "' id='button_end' class='last_page_non_active' disabled>
+                            <img src='/help.files/images/arrow_non_active_right.png' width='15' height='10'>
+                  </button>";
+        }else{
+            $page_end = "<button formaction='/records/" . $method . "/" . "$page_total"."/" . "$path". "' id='button_end' class='last_page'>
                             <img src='/help.files/images/arrows_right.png' width='15' height='10'>
                   </button>";
+        }
+
 
         if($page + 1 <= $page_total){
             $next_page = "<button formaction='/records/".$method."/" . ($page+1) . "/" ."$path" ."' class='next_page'>" . "Next"." ". "<img src='/help.files/images/next_image.png'>"."</button>";
         }else{
-            $next_page = "<button formaction='/records/".$method."/" . $page . "/" ."$path" ."' class='next_page'>"."<img src='/help.files/images/next_image.png'>"." Next"."</button>";
+            $next_page = "<button formaction='/records/".$method."/" . $page . "/" ."$path" ."' class='next_page' disabled>"."<span class='non_active_text'> Next</span>"."</button>";
         }
         if($page - 1 >0){
-            $prev_page= "<button formaction='/records/".$method."/" . ($page-1) . "/" . "$path"."' class='prev_page'>"."<img src='/help.files/images/prev_image.png'>"." Previous"."</button>";
+            $prev_page= "<button formaction='/records/".$method."/" . ($page-1) . "/" . "$path"."' class='prev_page'>"."<img src='/help.files/images/prev_image.png'>"."Previous"."</button>";
         }
         else {
-            $prev_page= "<button formaction='/records/".$method."/" . ($page) . "/" . "$path"."' class='prev_page'>"."<img src='/help.files/images/prev_image.png'>". " Previous"."</button>";
+            $prev_page= "<button formaction='/records/".$method."/" . ($page) . "/" . "$path"."' class='prev_page' disabled>"."<span class='non_active_text'> Previous</span>"."</button>";
         }
 
 

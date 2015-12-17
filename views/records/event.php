@@ -10,7 +10,9 @@
     <body>
     <div class="wrapper">
         <header>
-            <img src="/help.files/images/flag.jpg">
+            <a class="logo_link" href="/records/main">
+                 <img src="/help.files/images/flag.jpg">
+            </a>
             <div class="header_links">
                 <a href="/records/main">
                     <div class="header_link_border_l"></div>
@@ -83,6 +85,10 @@
                                     }
                                 }
                             }
+                            if($records['reset_info']==true){
+                                $records['checkedCheckbox']='';
+                                $allCheckboxes='';
+                            }
 
                             ?>
                    <tr class='event_line'><td colspan=6></td></tr>
@@ -119,9 +125,7 @@
             </div>
             <div class="emails_cancel">
                 <div class="emails_submit_l"></div>
-                <a href="/records/main">
-                    <input type="reset" class="emails_button" name="cancel" value="Reset">
-                </a>
+                <button formaction="/records/event/<?=$records['reset_button']?>" class="emails_button">Reset</button>
                 <div class="emails_submit_r"></div>
              </div>
                 </div>
@@ -135,9 +139,7 @@
             <img src="/help.files/images/pagination_border_r.png">
         </label>
         </div>
-
             <?php else : ?>
-
         </form>
         <p>You don't have any contacts.Press <a href="add.php">add</a> to add contacts</p>
         <?php endif; ?>

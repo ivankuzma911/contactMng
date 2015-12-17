@@ -1,4 +1,5 @@
 <?php
+
 include('controller.php');
 class records extends controller
 {
@@ -19,7 +20,7 @@ class records extends controller
     public function main($params = null)
     {
         if ($params === null) {
-            $params = '1/first/true/true';
+            $params = DEFAULT_SORTING;
             $params = explode('/', $params);
         }
         $method = 'main';
@@ -43,7 +44,6 @@ class records extends controller
 
     public function event($params = null)
     {
-
         $this->model->deleteCheckboxes();
         $this->model->saveCheckboxes();
         if ($params === null) {
@@ -59,6 +59,8 @@ class records extends controller
         $records['records']['db'] = $this->model->getRecords($params);
         $records['records']['sort_arrows'] = $params;
         $records['records']['generate_url_all'] = $this->model->getAllUrl($params);
+        $records['records']['reset_button']=$this->model->getAllUrl($params,'reset');
+        $records['records']['reset_info']= $this->model->checkReset($params);
         $records['records']['allCheckboxes'] = $this->model->allCheckboxes($params);
         $records['records']['checked_records'] = $this->model->countRecords($records['records']['db']);
         if ($records['records']['db']->num_rows != 0) {
@@ -79,7 +81,10 @@ class records extends controller
             $this->view = new View($this->controller, $method);
             $this->view->display();
         } else {
-            $this->model->addContact();
+            if(!$this->model->addContact()){
+                $this->view = new View($this->controller, $method);
+                $this->view->display();
+            }
         }
     }
 
@@ -100,7 +105,6 @@ class records extends controller
 
     public function delete($id)
     {
-
         $method = 'delete';
         if (isset($_POST['submit'])) {
             $this->model->deleteContact($id);
@@ -132,9 +136,7 @@ class records extends controller
 
     public function insert()
     {
-
         if ($this->model->saveEmails()) {
-
             redirect::to('/records/main');
         }
     }

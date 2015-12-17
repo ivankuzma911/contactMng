@@ -31,7 +31,7 @@ header{
     min-width: 1000px;
 }
 
-header > img{
+header .logo_link > img{
     position: relative;
     left: 150px;
     float: left;

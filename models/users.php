@@ -1,9 +1,15 @@
 <?php
 include('model.php');
 class UsersModel extends model{
+
+
     public function validate_user(){
         $this->array_to_db['params_to_db'][0] = 'login';
         $this->array_to_db['params_to_db'][1] = 'password';
+        if(!$this->validate_data($_POST['login']) OR !$this->validate_data($_POST['password'])){
+            redirect::to();
+        }
+
         $this->array_to_db['params_to_select'][0] = $_POST['login'];
         $this->array_to_db['params_to_select'][1] = md5($_POST['password']);
         $this->array_to_db['table'] = 'users';
@@ -20,6 +26,9 @@ class UsersModel extends model{
     }
 
     public function create_user(){
+        if(!$this->validate_data($_POST['login']) OR !$this-$this->validate_data($_POST['password'])){
+            redirect::to();
+        }
         $this->array_to_db['params_to_db'] = 'login';
         $this->array_to_db['params_to_select'] = $_POST['login'];
         $this->array_to_db['table'] = 'users';

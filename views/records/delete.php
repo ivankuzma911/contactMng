@@ -10,7 +10,9 @@
 <body>
 <div class="wrapper">
     <header>
-        <img src="/help.files/images/flag.jpg">
+        <a class="logo_link" href="/records/main">
+            <img src="/help.files/images/flag.jpg">
+        </a>
         <div class="header_links">
             <a href="/records/main">
                 <div class="header_link_border_l"></div>

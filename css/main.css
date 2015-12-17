@@ -183,7 +183,7 @@ tbody tr:first-child{
     height: 17px;
 }
 
-.main_actions:hover .link_delete{
+.tr_content:hover .link_delete{
     display: block;
 }
 
@@ -272,3 +272,26 @@ label img{
     height: 33px;
     clear: both;
 }
+
+.first_page_non_active{
+    float: left;
+    background-image: url('/help.files/images/pagination_back.png');
+    background-repeat: repeat-x;
+    border:none;
+    height: 33px;
+    width: 80px;
+}
+
+.last_page_non_active{
+    float: left;
+    background-image: url('/help.files/images/pagination_back.png');
+    background-repeat: repeat-x;
+    border:none;
+    height: 33px;
+    width: 80px;
+}
+
+.non_active_text{
+    color:#9e0505;
+}
+

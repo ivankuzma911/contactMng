@@ -288,3 +288,25 @@ label img{
     top:10px;
     left:20px;
 }
+
+.first_page_non_active{
+    float: left;
+    background-image: url('/help.files/images/pagination_back.png');
+    background-repeat: repeat-x;
+    border:none;
+    height: 33px;
+    width: 80px;
+}
+
+.last_page_non_active{
+    float: left;
+    background-image: url('/help.files/images/pagination_back.png');
+    background-repeat: repeat-x;
+    border:none;
+    height: 33px;
+    width: 80px;
+}
+
+.non_active_text{
+    color:#9e0505;
+}
