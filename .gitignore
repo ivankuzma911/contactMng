@@ -1,7 +1,7 @@
 ### JetBrains template
 *.log
 .idea/
-/help.files/config.php
+help.files/config.php
 
 
 
