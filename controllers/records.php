@@ -77,14 +77,18 @@ class records extends controller
     public function add()
     {
         $method = 'add';
+        $this->view = new View($this->controller, $method);
         if (!isset($_POST['submit_add'])) {
-            $this->view = new View($this->controller, $method);
             $this->view->display();
         } else {
-            if(!$this->model->addContact()){
-                $this->view = new View($this->controller, $method);
-                $this->view->display();
+            $validate = $this->model->addContact();
+            var_dump($validate);
+            $records = array();
+            if(is_string($validate)){
+                $records['warning'] = $validate;
+                $this->view->set($records);
             }
+            $this->view->display();
         }
     }
 

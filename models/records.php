@@ -188,19 +188,33 @@ class RecordsModel extends model{
         $this->array_to_db['table'] = 'records';
         $this->array_to_db['params_to_db'] = 'id';
         unset($_POST['submit_add']);
+        $arr = array();
         foreach($_POST as $key=>$value){
             if($key == 'email'){
-                if(!$this->validate_data($value,'email')){
-                    return false;
+                $arr[$key] = $this->validate_data($value,'email');
+                if($arr[$key]=='warning_email'){
+                    return 'email';
                 }
-            }else {
-                if (!$this->validate_data($value)) {
-                    return false;
+            }elseif($key == 'work' OR $key == 'home' OR  $key =='cell'){
+                $arr[$key] = $this->validate_data($value,'number');
+                if($arr[$key]=='warning_number'){
+                    return 'number';
+                }
+            }
+            elseif($key == 'birthday'){
+                $arr[$key] = $this->validate_data($value,'date');
+                if($arr[$key]=='warning_date'){
+                    return 'date';
+                }
+            }
+            else {
+                $arr[$key] = $this->validate_data($value);
+                if($arr[$key]=='warning-text'){
+                    return 'text';
                 }
             }
         }
-
-        $this->array_to_db['params_to_insert'] = $_POST;
+        $this->array_to_db['params_to_insert'] = $arr;
         $this->array_to_db['params_to_insert']['user_id'] = $_SESSION['id'];
         $result = $this->db->insert($this->array_to_db);
         if($result){

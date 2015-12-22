@@ -42,7 +42,6 @@ abstract class model{
         $value = stripslashes($value);
         $value = strip_tags($value);
         $value = htmlspecialchars($value);
-
         return $value;
     }
 
@@ -53,9 +52,9 @@ abstract class model{
                 $data = $this->clean($params);
                 $result_data = preg_match($template, $data);
                 if ($result_data == 1) {
-                    return true;
+                    return $data;
                 }
-                return false;
+                return 'warning_text';
             }
             return true;
         }elseif($type == 'email'){
@@ -64,12 +63,43 @@ abstract class model{
                 $data = $this->clean($params);
                 $result_data = preg_match($template,$data);
                 if($result_data == 1){
-                    return true;
+                    return $data;
                 }
-                return false;
+                return 'warning_email';
             }
         }elseif($type == 'date' ){
+            if($params != ''){
+                $template = "/[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}|[0-9]{1,4}\-[0-9]{1,2}\-[0-9]{2,4}/";
+                $data = $this->clean($params);
+                $result_data = preg_match($template,$data);
+                if($result_data == 1){
+                    return $data;
+                }
+                return 'warning_date';
+            }
 
+            /*
+             * 42.42.4233
+                12.12.2012
+                3.6.2015
+                12-12-2015
+             *
+             */
+
+        }elseif($type == 'number'){
+            if($params !=''){
+                $template = "/[0-9]{10}|[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}|\([0-9]{3}\){1}[0-9]{7}|[0-9]{2,4}/";
+                $data = $this->clean($params);
+                $result_data = preg_match($template,$data);
+                if($result_data == 1){
+                    return $data;
+                }
+                return 'warning_number';
+            }
+            /*0986264015
+            098-626-40-15
+            (098)6264015
+            098 626 40 158*/
         }
     }
 }

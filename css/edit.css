@@ -87,5 +87,14 @@ input[type='submit']{
     clear:none;
     height: 626px;
     width: 0;
+}
 
+.warning{
+    font-size:10px;
+    color:red;
+}
+
+#birthday{
+    float:left;
+    width:100px;
 }

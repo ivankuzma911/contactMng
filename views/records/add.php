@@ -75,6 +75,9 @@
                         <td align="right">
                             <input type="text" name="email" id="email" maxlength="30" size="15" required >
                         </td>
+                        <?php if(isset($warning) && $warning == 'email'):?>
+                        <td class="warning">Bad Email</td>
+                        <?php endif;?>
                     </tr>
                     <tr>
                         <td>
@@ -84,6 +87,9 @@
                         <td align="right">
                             <input type="text" id="home"  name="home" maxlength="30" size="15" >
                         </td>
+                        <?php if(isset($warning) && $warning == 'number'):?>
+                            <td class="warning">Bad number</td>
+                        <?php endif;?>
                     </tr>
                     <tr>
                         <td>
@@ -157,7 +163,12 @@
                         </td>
                         <td align="right">
                             <input type="text" name="birthday" maxlength="30" id="birthday" size="15" >
+                            <select><option>YYYY-MM-DD</option></select>
                         </td>
+                        <?php if(isset($warning) && $warning == 'date'):?>
+                            <td class="warning">Bad Date</td>
+                        <?php endif;?>
+
                     </tr>
                     </tbody>
                 </table>
