@@ -78,30 +78,29 @@ class records extends controller
     {
         $method = 'add';
         $this->view = new View($this->controller, $method);
-        if (!isset($_POST['submit_add'])) {
-            $this->view->display();
-        } else {
-            $validate = $this->model->addContact();
-            var_dump($validate);
-            $records = array();
-            if(is_string($validate)){
-                $records['warning'] = $validate;
-                $this->view->set($records);
+        if (isset($_POST['submit_add'])) {
+            $errors['errors']['errors'] = $this->model->addContact();
+            $errors['errors']['prev_values']= $this->model->getPrevValues();
+            $this->view->set($errors);
             }
-            $this->view->display();
-        }
+        $this->view->display();
     }
 
     public function edit($id)
     {
-        $method = 'edit';
-        if (isset($_POST['submit_edit'])) {
-            $this->model->edit_record($id);
-            header("location:/records/main");
-        } else {
+        if(isset($_POST['submit_edit'])){
+            $method = 'edit';
+            $this->view = new View($this->controller, $method);
+            $errors['errors']['errors'] = $this->model->addContact('edit',$id);
+            $errors['errors']['prev_values']= $this->model->getPrevValues();
+            $this->view->set($errors);
+            $this->view->display();
+        }else {
+            $method = 'edit';
             $this->view = new View($this->controller, $method);
             $record['result'] = $this->model->getRecordById($id);
             $record['best_phone'] = best_phone::get_to_view($record['result']);
+            $record['result']['birthday'] = $this->model->editDate($record['result']['birthday']);
             $this->view->set($record);
             $this->view->display();
         }

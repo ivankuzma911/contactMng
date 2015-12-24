@@ -85,7 +85,12 @@ class db {
             }
             $sql = substr($sql, 0, -2);
             $sql .= " where id=$params[params_to_select]";
-            $this->query($sql);
+            $query = $this->query($sql);
+            if($query){
+                return true;
+            }else{
+                return false;
+            }
         }
 
     }

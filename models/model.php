@@ -45,38 +45,32 @@ abstract class model{
         return $value;
     }
 
-    public function validate_data($params, $type = 'text'){
+    public function validate_data($data, $type = 'text'){
         if($type == 'text') {
-            if($params!= '') {
                 $template = "/[a-zA-Z0-9_]{1,15}/";
-                $data = $this->clean($params);
                 $result_data = preg_match($template, $data);
-                if ($result_data == 1) {
-                    return $data;
+                if ($result_data != 1) {
+                    return 'text';
                 }
-                return 'warning_text';
-            }
-            return true;
+                return true;
+
+
         }elseif($type == 'email'){
-            if($params != ''){
+
                 $template = "/[a-zA-Z0-9]{5,20}@[a-zA-Z]{1,6}.[a-zA-Z]{2,4}/";
-                $data = $this->clean($params);
                 $result_data = preg_match($template,$data);
-                if($result_data == 1){
-                    return $data;
+                if($result_data != 1){
+                    return 'email';
                 }
-                return 'warning_email';
-            }
+                return true;
+
         }elseif($type == 'date' ){
-            if($params != ''){
-                $template = "/[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}|[0-9]{1,4}\-[0-9]{1,2}\-[0-9]{2,4}/";
-                $data = $this->clean($params);
+                $template = "/[0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{4}|[0-9]{1,4}\\-[0-9]{1,2}\\-[0-9]{2,4}/";
                 $result_data = preg_match($template,$data);
-                if($result_data == 1){
-                    return $data;
+                if($result_data != 1){
+                    return 'date';
                 }
-                return 'warning_date';
-            }
+                return true;
 
             /*
              * 42.42.4233
@@ -85,17 +79,15 @@ abstract class model{
                 12-12-2015
              *
              */
+        }elseif($type == 'home' OR $type == 'work' OR $type = 'cell'){
 
-        }elseif($type == 'number'){
-            if($params !=''){
                 $template = "/[0-9]{10}|[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}|\([0-9]{3}\){1}[0-9]{7}|[0-9]{2,4}/";
-                $data = $this->clean($params);
                 $result_data = preg_match($template,$data);
-                if($result_data == 1){
-                    return $data;
+                if($result_data != 1){
+                    return $type;
                 }
-                return 'warning_number';
-            }
+                return true;
+
             /*0986264015
             098-626-40-15
             (098)6264015

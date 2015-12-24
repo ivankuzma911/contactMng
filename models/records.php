@@ -184,45 +184,54 @@ class RecordsModel extends model{
 
     }
 
-    public function addContact(){
+    public function addContact($action = 'add',$id = ''){
         $this->array_to_db['table'] = 'records';
         $this->array_to_db['params_to_db'] = 'id';
         unset($_POST['submit_add']);
-        $arr = array();
+        $errors = array();
         foreach($_POST as $key=>$value){
+            $clean_data[$key] = $this->clean($value);
             if($key == 'email'){
-                $arr[$key] = $this->validate_data($value,'email');
-                if($arr[$key]=='warning_email'){
-                    return 'email';
-                }
+                $errors[$key] = $this->validate_data($clean_data[$key],'email');
             }elseif($key == 'work' OR $key == 'home' OR  $key =='cell'){
-                $arr[$key] = $this->validate_data($value,'number');
-                if($arr[$key]=='warning_number'){
-                    return 'number';
-                }
+                $errors[$key] = $this->validate_data($clean_data[$key],$key);
             }
             elseif($key == 'birthday'){
-                $arr[$key] = $this->validate_data($value,'date');
-                if($arr[$key]=='warning_date'){
-                    return 'date';
-                }
+                $errors[$key] = $this->validate_data($clean_data[$key],'date');
             }
             else {
-                $arr[$key] = $this->validate_data($value);
-                if($arr[$key]=='warning-text'){
-                    return 'text';
-                }
+                $errors[$key] = $this->validate_data($clean_data[$key]);
             }
         }
-        $this->array_to_db['params_to_insert'] = $arr;
-        $this->array_to_db['params_to_insert']['user_id'] = $_SESSION['id'];
-        $result = $this->db->insert($this->array_to_db);
-        if($result){
-            header("location:/records/main");
+
+        foreach($errors as $key=>$value){
+            if(is_string($value)){
+                return $errors;
+            }
+        }
+        $clean_data['birthday'] = $this->editDate($clean_data['birthday']);
+        if($action == 'edit'){
+            unset($clean_data['submit_edit']);
+                $this->array_to_db['params_to_select'] = $id;
+                $this->array_to_db['params_to_update'] = $clean_data;
+                $result = $this->db->update($this->array_to_db);
+            if($result){
+                header("location:/records/main");
+            }else {
+                return false;
+            }
         }else{
-            return false;
+            $this->array_to_db['params_to_insert'] = $clean_data;
+            $this->array_to_db['params_to_insert']['user_id'] = $_SESSION['id'];
+            $result = $this->db->insert($this->array_to_db);
+            if($result){
+                header("location:/records/main");
+            }else{
+                return false;
+            }
         }
     }
+
 
     public function GetRecordById($id){
         $this->array_to_db['table'] = 'records';
@@ -239,7 +248,6 @@ class RecordsModel extends model{
         $this->array_to_db['params_to_select'] = $id;
         $this->array_to_db['params_to_update'] = $_POST;
         $this->db->update($this->array_to_db);
-
     }
 
     public function  deleteContact($id){
@@ -249,6 +257,19 @@ class RecordsModel extends model{
         $this->db->delete($this->array_to_db);
         return true;
 }
+
+    public function editDate($birthday){
+        $date = explode('-',$birthday);
+        $dateToReturn = $date[2] . '-' . $date[1] . '-' . $date[0];
+        return $dateToReturn;
+    }
+
+
+    public function getPrevValues(){
+        $prev_values = $_POST;
+        unset($prev_values['submit_add']);
+        return $prev_values;
+    }
 
     public function saveEmails(){
         $emails = $_POST['checkboxes'];
