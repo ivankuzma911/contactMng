@@ -91,6 +91,7 @@ tbody tr:first-child{
 
 .tr_content{
     height: 30px;
+    cursor: pointer;
 }
 
 .main_bottom{

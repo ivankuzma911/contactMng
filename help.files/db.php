@@ -85,6 +85,7 @@ class db {
             }
             $sql = substr($sql, 0, -2);
             $sql .= " where id=$params[params_to_select]";
+            var_dump($sql);
             $query = $this->query($sql);
             if($query){
                 return true;
@@ -101,6 +102,7 @@ class db {
     }
 
     public function update($params){
+        var_dump($params);
         $params['action'] = 'update';
         return $this->queryBuilder($params);
     }

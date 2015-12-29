@@ -209,6 +209,8 @@ class RecordsModel extends model{
                 return $errors;
             }
         }
+
+
         $clean_data['birthday'] = $this->editDate($clean_data['birthday']);
         if($action == 'edit'){
             unset($clean_data['submit_edit']);
@@ -260,6 +262,7 @@ class RecordsModel extends model{
 
     public function editDate($birthday){
         $date = explode('-',$birthday);
+
         $dateToReturn = $date[2] . '-' . $date[1] . '-' . $date[0];
         return $dateToReturn;
     }

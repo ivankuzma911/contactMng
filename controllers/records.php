@@ -79,9 +79,9 @@ class records extends controller
         $method = 'add';
         $this->view = new View($this->controller, $method);
         if (isset($_POST['submit_add'])) {
-            $errors['errors']['errors'] = $this->model->addContact();
-            $errors['errors']['prev_values']= $this->model->getPrevValues();
-            $this->view->set($errors);
+            $to_view['errors']['errors'] = $this->model->addContact();
+            $to_view['prev_values']['prev_values']= $this->model->getPrevValues();
+            $this->view->set($to_view);
             }
         $this->view->display();
     }
@@ -91,9 +91,9 @@ class records extends controller
         if(isset($_POST['submit_edit'])){
             $method = 'edit';
             $this->view = new View($this->controller, $method);
-            $errors['errors']['errors'] = $this->model->addContact('edit',$id);
-            $errors['errors']['prev_values']= $this->model->getPrevValues();
-            $this->view->set($errors);
+            $to_view['errors']['errors'] = $this->model->addContact('edit',$id);
+            $to_view['prev_values']['prev_values']= $this->model->getPrevValues();
+            $this->view->set($to_view);
             $this->view->display();
         }else {
             $method = 'edit';
