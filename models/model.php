@@ -75,7 +75,7 @@ abstract class model{
 
         }elseif($type == 'home' OR $type == 'work' OR $type = 'cell'){
 
-                $template = "/[(]{1}[0-9]{3}[)]{1}[0-9]{7}/";
+                $template = "/(\\d){3} (\\d){2} (\\d){2} (\\d){3}|(\\d){3}-(\\d){3}-(\\d){2}-(\\d){2}|(\\(){1}(\\d){4}(\\)) (\\d){2} (\\d){2} (\\d){2}/";
                 $result_data = preg_match($template,$data);
                 if($result_data != 1){
                     return 'validate number';
