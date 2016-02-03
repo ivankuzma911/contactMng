@@ -46,7 +46,7 @@
     <div class="emails_c">
 <form action="/records/sendmail" method="POST">
         <div class="top">
-        <label id="label">To:<input type="text" size="30" name="emails" value="<?= $emails; ?>"></label>
+        <label id="label">To:<input type="text" size="30" name="emails" value="<?= $emails?>"></label>
         <a href="/records/event/1/first/true/true">
             <div class="emails_submit_l"></div>
             <input type="button" class="emails_button" value="Add addresses">

@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="/css/event.css">
 
     </head>
-    <body>
+    <body onload="checkCookie();checkCheckBoxes()">
     <div class="wrapper">
         <header>
             <a class="logo_link" href="/records/main">
@@ -42,24 +42,19 @@
         </header>
         <div class="event_content">
             <form action="/records/emails/" method="post">
+
         <?php if ($records['view'] == 1) : ?>
             <div class="event_table_head">
                 <div class="event_table_head_checkboxes">
-                    <label for="checkbox">
-                        <a href="/records/event/<?= $records['generate_url_all']?>">All</a>
+                    <label for="all">
+                        <span name="all" onclick="allCheckboxes()">All</span>
                     </label>
                 </div>
                 <div class="event_table_head_first">
-                    <button formaction="<?=$records['generate_url_first']?>">
-                        First
-                        <img src="/help.files/images/<?=$records['sort_arrows'][2]?>.png" alt="strilka" height="15">
-                    </button>
+                        <img src="/help.files/images/<?=$records['sort_arrows'][2]?>.png" onclick="ajaxRequestEvent('sort_first')"  height="15">
                 </div>
                 <div class="event_table_head_last">
-                    <button formaction="<?=$records['generate_url_last']?>">
-                        Last
-                        <img src="/help.files/images/<?=$records['sort_arrows'][3]?>.png" alt="strilka" height="15">
-                    </button>
+                        <img src="/help.files/images/<?=$records['sort_arrows'][3]?>.png" onclick="ajaxRequestEvent('sort_last')"  height="15">
                 </div>
                 <div class="event_table_head_email">Email</div>
                 <div class="event_table_head_best">Best phone</div>
@@ -69,32 +64,13 @@
              <table>
                  <tbody>
                         <?php
-                        $allCheckboxes = $records['allCheckboxes'];
                         foreach ($records['db'] as $result):
-                            $records['checkedCheckbox'] = '';
                             $best_phone = best_phone::get($result);
-                            if(isset($_COOKIE['checkboxes'])){
-                                foreach($_COOKIE['checkboxes'] as $key=>$value) {
-                                    if ($result['id'] == $key) {
-                                        if($records['checked_records'] == 5 && $records['allCheckboxes'] == 'checked') {
-                                            $records['checkedCheckbox'] = '';
-                                            $allCheckboxes = '';
-                                        }else{
-                                            $records['checkedCheckbox']='checked';
-                                        }
-                                    }
-                                }
-                            }
-                            if($records['reset_info']==true){
-                                $records['checkedCheckbox']='';
-                                $allCheckboxes='';
-                            }
-
                             ?>
                    <tr class='event_line'><td colspan=6></td></tr>
                             <tr class="tr_content">
                         <td class="td_content_checkboxes">
-                            <input id="checkbox" type="checkbox" name="checkboxes[]" value="<?=$result['id'] ?>"<?=$records['checkedCheckbox']?> <?= $allCheckboxes?>  >
+                            <input id="checkbox" class="checkboxes" type="checkbox" onchange="makeCheckBox(this)" name="checkboxes[]" value="<?=$result['id'] ?>">
                          </td>
                                 <td class="td_content_first">
                             <?= $result['first'] ?>
@@ -131,13 +107,7 @@
                 </div>
             </div>
     <div class="pagination">
-            <label for="button_start">
-                <img src="/help.files/images/pagination_border_l.png">
-            </label>
-    <form action="" method='post'><?=$records['arrows'];?></form>
-        <label for="button_end">
-            <img src="/help.files/images/pagination_border_r.png">
-        </label>
+    <?=$records['arrows'];?>
         </div>
             <?php else : ?>
         </form>
@@ -148,5 +118,7 @@
     <div class="footer">
         &copy Wise Engineering 2015
     </div>
+
+    <script src="/help.files/js/scripts.js"></script>
     </body>
 </html>

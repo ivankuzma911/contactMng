@@ -54,12 +54,18 @@
                 <label for="text" >Login:</label>
             </td>
             <td>
-                <input id="text" type="text" name="login" maxlength="30" size="15" required>
+                <input id="text" type="text" name="login" maxlength="30" size="15" required value="<?php if(isset($prev_values['login'])){echo $prev_values['login'];}?>">
             </td>
+            <?php if(isset($errors['login'])):?>
+                <td class="warning" title="enter your login correctly"><?=$errors['login']?></td>
+            <?php endif;?>
         </tr>
         <tr>
             <td ><label for="password" >Password:</label></td>
-            <td><input id="password" type="password" name="password" maxlength="30" size="15" required></td>
+            <td><input id="password" type="password" name="password" maxlength="30" size="15" value="<?php if(isset($prev_values['password'])){echo $prev_values['password'];}?>" required></td>
+            <?php if(isset($errors['password'])):?>
+                <td class="warning" title="at least 8 symbols with one varchar!"><?=$errors['password']?></td>
+            <?php endif;?>
         </tr>
     </table>
     <div class="registrate_submit_button">

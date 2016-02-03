@@ -267,6 +267,7 @@ label img{
 }
 
 .pagination .pages{
+    display: inline;
     border: none;
     font-size: 10px;
     background-image: url('/help.files/images/buttons_back.png');
@@ -308,5 +309,31 @@ label img{
 }
 
 .non_active_text{
-    color:#9e0505;
+    position: relative;
+    top:7px;
+    color:#343434;
+}
+
+#start_arrow{
+    position: relative;
+    top: 5px;
+    left: 15px;
+}
+
+#end_arrow{
+    position: relative;
+    left: 30px;
+    top: 5px;
+}
+
+#next_page_span {
+    position: relative;
+    top: 7px;
+    left: 12px;
+}
+
+#prev_page_span{
+    position: relative;
+    top:7px;
+
 }

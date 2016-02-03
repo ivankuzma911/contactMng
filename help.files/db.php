@@ -26,13 +26,14 @@ class db {
         if($params['action'] == 'select'){
             $sql = "SELECT $params[what] from $params[table] where ";
             if(is_array($params['params_to_db'])){
-                $sql .= $params['params_to_db']['0'] ."= '" .  $params['params_to_select']['0'] ."' AND ";
-                $sql .= $params['params_to_db']['1'] ."= '" . $params['params_to_select']['1'] . "'";
+                $sql .= $params['params_to_db']['0'] . "= '" .  $params['params_to_select']['0'] ."' AND ";
+                $sql .= $params['params_to_db']['1'] . "= '" . $params['params_to_select']['1'] . "'";
             }else{
                 $sql .= $params['params_to_db'] . "= '" . $params['params_to_select'] . "'";
             }
+
             if($params['orderBy']!=''){
-                $sql .= "ORDER BY first ";
+                $sql .= " ORDER BY first ";
                 if($params['orderBy_first']=='asc'){
                     $sql .= " ASC";
                 }else{
@@ -58,6 +59,8 @@ class db {
                 case 'num_rows':
                     return mysqli_num_rows($query);
             }
+
+
         }elseif($params['action'] == 'delete'){
             $sql = "DELETE from $params[table] where ";
             $sql .= $params['params_to_db'] . "= '" . $params['params_to_delete'] ."'";
@@ -85,7 +88,7 @@ class db {
             }
             $sql = substr($sql, 0, -2);
             $sql .= " where id=$params[params_to_select]";
-            var_dump($sql);
+
             $query = $this->query($sql);
             if($query){
                 return true;
@@ -102,7 +105,6 @@ class db {
     }
 
     public function update($params){
-        var_dump($params);
         $params['action'] = 'update';
         return $this->queryBuilder($params);
     }

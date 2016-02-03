@@ -37,14 +37,13 @@ class users extends controller
     {
         $method = 'registrate';
         if (isset($_POST['submit'])) {
-            if ($this->model->create_user()) {
-                header("location:/users/login");
-            } else {
+                $notice['errors'] = $this->model->create_user();
                 $notice['notice'] = "Something went wrong";
+                $notice['prev_values']= $this->model->getPrevValues();
                 $this->view = new View($this->controller, $method);
                 $this->view->set($notice);
                 $this->view->display();
-            }
+
         } else {
             $this->view = new View($this->controller, $method);
             $this->view->display();
@@ -54,11 +53,10 @@ class users extends controller
 
     public function logout()
     {
-        $domen = 'study.ivan';
+
         if (isset($_COOKIE['checkboxes'])) {
-            foreach ($_COOKIE['checkboxes'] as $key => $value) {
-                setcookie("checkboxes[$key]", null, time() - 3600, '/', $domen);
-            }
+            setcookie("checkboxes", null, time() - 3600, '/');
+            setcookie("emailsLenght",null,time()-3600,'/');
         }
         session_destroy();
         header('location:/users/login');

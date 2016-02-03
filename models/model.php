@@ -17,8 +17,13 @@ abstract class model{
 
     public function __construct($class_to_load){
         $this->class_loader($class_to_load);
-
         $this->db = new db();
+    }
+
+    public function getPrevValues(){
+        $prev_values = $_POST;
+        unset($prev_values['submit_add']);
+        return $prev_values;
     }
 
 
@@ -73,8 +78,14 @@ abstract class model{
                     return 'validate date';
                 }
 
-        }elseif($type == 'home' OR $type == 'work' OR $type = 'cell'){
-
+        }elseif($type == 'password'){
+            $template = "/^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$/";
+            $result_data = preg_match($template,$data);
+            if($result_data != 1){
+                return 'validate password';
+            }
+        }
+        elseif($type == 'home' OR $type == 'work' OR $type = 'cell'){
                 $template = "/(\\d){3} (\\d){2} (\\d){2} (\\d){3}|(\\d){3}-(\\d){3}-(\\d){2}-(\\d){2}|(\\(){1}(\\d){4}(\\)) (\\d){2} (\\d){2} (\\d){2}/";
                 $result_data = preg_match($template,$data);
                 if($result_data != 1){

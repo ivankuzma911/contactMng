@@ -57,7 +57,7 @@
     </p>
     <?php };?>
     <p>
-        <input type="submit" name="submit1" value="Add to my contacts">
+        <input type="submit" name="send" value="Add to my contacts">
     </p>
     <p>
         <a href="/records/main">Go to my albums/event</a>

@@ -5,6 +5,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="/css/style.css">
         <link rel="stylesheet" href="/css/main.css">
+        <script src="/help.files/js/scripts.js"></script>
+
     </head>
     <body>
     <div class="wrapper">
@@ -43,22 +45,15 @@
     <?php if ($records['view'] == 1) : ?>
             <div class="main_table_head">
                 <div class="main_table_head_first">
-                    <a href="<?= $records['generate_url_first']?>">
-                        First
-                        <img src="/help.files/images/<?=$records['sort_arrows'][2]?>.png" alt="strilka" height="15">
-                    </a>
+                        <img src="/help.files/images/<?=$records['sort_arrows'][2]?>.png"  height="15" onclick="ajaxRequest('sort_first')">
                 </div>
                 <div class="main_table_head_last">
-                    <a href="<?= $records['generate_url_last']?>">
-                        Last
-                        <img src="/help.files/images/<?=$records['sort_arrows'][3]?>.png" alt="strilka" height="15">
-                    </a>
+                        <img src="/help.files/images/<?=$records['sort_arrows'][3]?>.png" alt="strilka" height="15" onclick="ajaxRequest('sort_last')">
                 </div>
                 <div class="main_table_head_email">Email</div>
                 <div class="main_table_head_best">Best phone</div>
                 <div class="main_table_head_actions">Actions</div>
             </div>
-
     <table>
         <tbody>
         <?php
@@ -97,7 +92,6 @@
                             </div>
                          </a>
                     </div>
-
                     <div class="link_delete">
                         <a href='/records/delete/<?=$result['id']?>'>
                             <img src="/help.files/images/delete_button.png">
@@ -106,21 +100,12 @@
                 </td>
 
             </tr>
-        <?php endforeach;
-        ?>
+        <?php endforeach; ?>
         </tbody>
     </table>
     <div class="main_bottom"></div>
-
-
     <div class="pagination">
-            <label for="button_start">
-                <img src="/help.files/images/pagination_border_l.png">
-            </label>
-    <form action="" method='post'><?=$records['arrows'];?></form>
-        <label for="button_end">
-            <img src="/help.files/images/pagination_border_r.png">
-        </label>
+        <?=$records['arrows'];?>
         <div class="helper"></div>
         </div>
 
