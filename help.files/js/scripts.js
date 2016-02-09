@@ -76,7 +76,6 @@ function getCookieValue() {
 
 
 function checkCheckBoxes(){
-   // alert(123);
     var elements = document.getElementsByClassName("checkboxes");
     for(var i=0;i<elements.length;i++){
        var result = isSetCookieValue(elements[i].value);
@@ -111,6 +110,9 @@ function allCheckboxes(){
     }
 }
 
+var urlOrder = 'ajaxMain/1/first/true/true';
+
+
 function is_int(value){
     if((parseFloat(value) == parseInt(value)) && !isNaN(value)){
         return true;
@@ -119,98 +121,67 @@ function is_int(value){
     }
 }
 
-
-var urlOrder = '1/first/true/true';
-var urlOrderEvent = '1/first/true/true';
-
-
-
-function ajaxRequest(params) {
-    if(!is_int(params)){
-        var url = urlOrder.split('/');
-        if (params == 'sort_first') {
-            if (url[2] == 'true') {
-                url[2] = 'false';
-            } else {
-                url[2] = 'true';
-            }
-            url[1] = 'first';
+function sort(params,action){
+    var url = urlOrder.split('/');
+    if (params == 'sort_first') {
+        if (url[3] == 'true') {
+            url[3] = 'false';
+        } else {
+            url[3] = 'true';
         }
-        if (params == 'sort_last') {
-            if (url[3] == 'true') {
-                url[3] = 'false';
-            } else {
-                url[3] = 'true';
-            }
-            url[1] = 'last';
-        }
-        var request = url[0] + '/' + url[1] + '/' + url[2] + '/' + url[3];
-    }else{
-        var url = urlOrder.split('/');
-        url[0] = params;
-        var request = url[0] + '/' + url[1] + '/' + url[2] + '/' + url[3];
+        url[2] = 'first';
+        url[0] = action;
     }
+    if (params == 'sort_last') {
+        if (url[4] == 'true') {
+            url[4] = 'false';
+        } else {
+            url[4] = 'true';
+        }
+        url[2] = 'last';
+        url[0] = action;
+    }
+    var request = url[0] + '/' + url[1] + '/' + url[2] + '/' + url[3] + '/' + url[4] ;
     urlOrder = request;
-    sendRequest(request)
+    sendRequest(request,action);
 }
 
-
-
-
-
-function ajaxRequestEvent(params) {
-       if(!is_int(params)){
-        var url = urlOrderEvent.split('/');
-        if (params == 'sort_first') {
-            if (url[2] == 'true') {
-                url[2] = 'false';
-            } else {
-                url[2] = 'true';
-            }
-            url[1] = 'first';
-        }
-        if (params == 'sort_last') {
-            if (url[3] == 'true') {
-                url[3] = 'false';
-            } else {
-                url[3] = 'true';
-            }
-            url[1] = 'last';
-        }
-        var request = url[0] + '/' + url[1] + '/' + url[2] + '/' + url[3];
-    }else{
-        var url = urlOrder.split('/');
-        url[0] = params;
-        var request = url[0] + '/' + url[1] + '/' + url[2] + '/' + url[3];
-    }
-    urlOrderEvent = request;
-    sendRequestEvent(request)
-}
-
-function sendRequestEvent(request){
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            document.getElementsByClassName("event_content")[0].innerHTML = xmlhttp.responseText;
-            checkCheckBoxes();
-        }
-    };
-    xmlhttp.open("GET","/records/ajaxRequestEvent/" + request,true);
-    xmlhttp.send();
-
-}
 
 function sendRequest(request){
+   var elem = 'content';
+
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            document.getElementsByClassName("main_content")[0].innerHTML = xmlhttp.responseText;
+            document.getElementsByClassName(elem)[0].innerHTML = xmlhttp.responseText;
             checkCheckBoxes();
+            addListener();
         }
     };
-    xmlhttp.open("GET","/records/ajaxRequest/" + request,true);
+    xmlhttp.open("GET","/records/"  + request,true);
     xmlhttp.send();
 }
 
 
+
+
+
+function addListener(){
+    var link = document.getElementsByClassName('pagination')[0].getElementsByTagName('a');
+    for (var i = 0; i < link.length; i++) {
+        link[i].addEventListener('click', function (event) {
+            event.preventDefault();
+        });
+        link[i].addEventListener('click', function () {
+         var path = this.getAttribute('href').split('/');
+            var url = urlOrder.split('/');
+            url[0] = path[0];
+            url[1] = path[1];
+            var toRequest = url.join('/');
+            urlOrder = toRequest;
+            sendRequest(toRequest);
+        });
+
+    }
+}
 

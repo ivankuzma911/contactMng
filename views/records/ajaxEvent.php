@@ -8,10 +8,10 @@
                     </label>
                 </div>
                 <div class="event_table_head_first">
-                        <img src="/help.files/images/<?=$records['sort_arrows'][2]?>.png" onload="" onclick="ajaxRequestEvent('sort_first')" alt="strilka" height="15">
+                        <img src="/help.files/images/<?=$records['sort_arrows'][2]?>.png"  onclick="sort('sort_first','ajaxEvent')" alt="strilka" height="15">
                 </div>
                 <div class="event_table_head_last">
-                        <img src="/help.files/images/<?=$records['sort_arrows'][3]?>.png" onclick="ajaxRequestEvent('sort_last')" alt="strilka" height="15">
+                        <img src="/help.files/images/<?=$records['sort_arrows'][3]?>.png" onclick="sort('sort_last','ajaxEvent')" alt="strilka" height="15">
                 </div>
                 <div class="event_table_head_email">Email</div>
                 <div class="event_table_head_best">Best phone</div>
@@ -63,13 +63,12 @@
             </div>
     <div class="pagination">
     <?=$records['arrows'];?>
-        <script>
-            alert("sraka");
-
-        </script>
         </div>
             <?php else : ?>
         </form>
         <p>You don't have any contacts.Press <a href="add.php">add</a> to add contacts</p>
         <?php endif; ?>
+<script>
+    addListener();
+</script>
 

@@ -16,11 +16,12 @@ class records extends controller
         $this->model->checkuser();
     }
 
-    public function ajaxRequest($params){
+    public function ajaxMain($params){
         if ($params === null) {
             $params = DEFAULT_SORTING;
             $params = explode('/', $params);
         }
+
         $method = 'ajaxMain';
         $this->view = new View($this->controller, $method);
         $total_pages = $this->model->countRows();
@@ -39,7 +40,7 @@ class records extends controller
         $this->view->display();
     }
 
-    public function ajaxRequestEvent($params){
+    public function ajaxEvent($params){
         if ($params === null) {
             $params = '1/first/true/true';
             $params = explode('/', $params);
@@ -49,7 +50,7 @@ class records extends controller
         $total_pages = $this->model->countRows();
         $records['records']['generate_url_first'] = formConstruct::getUrl($params, 'first', $method);
         $records['records']['generate_url_last'] = formConstruct::getUrl($params, 'last', $method);
-        $records['records']['arrows'] = formConstruct::getArrowsEvent($params[0], $total_pages, $params, $method);
+        $records['records']['arrows'] = formConstruct::getArrows($params[0], $total_pages, $params, $method);
         $records['records']['db'] = $this->model->getRecords($params);
         $records['records']['sort_arrows'] = $params;
         $records['records']['generate_url_all'] = $this->model->getAllUrl($params);
@@ -79,7 +80,7 @@ class records extends controller
         $records['records']['generate_url_first'] = formConstruct::getUrl($params, 'first', $method);
         $records['records']['generate_url_last'] = formConstruct::getUrl($params, 'last', $method);
         $records['records']['db'] = $this->model->getRecords($params);
-        $records['records']['arrows'] = formConstruct::getArrows($params[0], $total_pages, $params, $method);
+        $records['records']['arrows'] = formConstruct::getArrows($params[0], $total_pages, $params, $method = 'ajaxMain');
         $records['records']['sort_arrows'] = $params;
         if (($records['records']['db']->num_rows) != 0) {
             $records['records']['view'] = '1';
@@ -94,17 +95,16 @@ class records extends controller
 
     public function event($params = null)
     {
-
         if ($params === null) {
             $params = '1/first/true/true';
             $params = explode('/', $params);
         }
-        $method = 'event';
+        $method = 'Event';
         $this->view = new View($this->controller, $method);
         $total_pages = $this->model->countRows();
         $records['records']['generate_url_first'] = formConstruct::getUrl($params, 'first', $method);
         $records['records']['generate_url_last'] = formConstruct::getUrl($params, 'last', $method);
-        $records['records']['arrows'] = formConstruct::getArrowsEvent($params[0], $total_pages, $params, $method);
+        $records['records']['arrows'] = formConstruct::getArrows($params[0], $total_pages, $params, $method = 'ajaxEvent');
         $records['records']['db'] = $this->model->getRecords($params);
         $records['records']['sort_arrows'] = $params;
         $records['records']['generate_url_all'] = $this->model->getAllUrl($params);

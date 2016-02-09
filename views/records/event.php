@@ -40,7 +40,7 @@
                 </a>
             </div>
         </header>
-        <div class="event_content">
+        <div class="content">
             <form action="/records/emails/" method="post">
 
         <?php if ($records['view'] == 1) : ?>
@@ -51,10 +51,10 @@
                     </label>
                 </div>
                 <div class="event_table_head_first">
-                        <img src="/help.files/images/<?=$records['sort_arrows'][2]?>.png" onclick="ajaxRequestEvent('sort_first')"  height="15">
+                        <img src="/help.files/images/<?=$records['sort_arrows'][2]?>.png" onclick="sort('sort_first','ajaxEvent')"  height="15">
                 </div>
                 <div class="event_table_head_last">
-                        <img src="/help.files/images/<?=$records['sort_arrows'][3]?>.png" onclick="ajaxRequestEvent('sort_last')"  height="15">
+                        <img src="/help.files/images/<?=$records['sort_arrows'][3]?>.png" onclick="sort('sort_last','ajaxEvent')"  height="15">
                 </div>
                 <div class="event_table_head_email">Email</div>
                 <div class="event_table_head_best">Best phone</div>
@@ -120,5 +120,8 @@
     </div>
 
     <script src="/help.files/js/scripts.js"></script>
+    <script>
+        addListener();
+    </script>
     </body>
 </html>

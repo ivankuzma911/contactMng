@@ -1,4 +1,4 @@
-.main_content{
+.content{
     position: absolute;
     padding-top: 100px;
     padding-bottom: 100px;
@@ -52,12 +52,12 @@
     width: 70px;
 }
 
-.main_content tbody{
+.content tbody{
     width: 712px;
     background-color: #303030;
 }
 
-.main_content table{
+.content table{
     border:0;
     width: 712px;
     border-spacing: 0 0;
@@ -71,7 +71,7 @@
     width: 100px;
 }
 
-.main_content tr{
+.content tr{
     font-size: 10px;
     margin-top:0;
 }
@@ -322,6 +322,10 @@ label img{
     position: relative;
     top:7px;
 
+}
+
+a{
+    text-decoration: none;
 }
 
 
